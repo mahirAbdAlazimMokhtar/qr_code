@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_code/screens/scanqr.dart';
 
 void main() {
   runApp(ScannerApp());
@@ -19,7 +20,9 @@ class ScannerApp extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>CreateQrCode(),),);
+              },
               child:const Text(
                 'Create Qr Code',
               ),
