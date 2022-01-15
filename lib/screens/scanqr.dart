@@ -1,55 +1,49 @@
 import 'package:barcode_widget/barcode_widget.dart';
-
 import 'package:flutter/material.dart';
 
-
-class CreateQrCode extends StatefulWidget {
-  const CreateQrCode({Key? key}) : super(key: key);
-
+class CreateScreen extends StatefulWidget {
   @override
-  _CreateQrCodeState createState() => _CreateQrCodeState();
+  _CreateScreenState createState() => _CreateScreenState();
 }
 
-class _CreateQrCodeState extends State<CreateQrCode> {
+class _CreateScreenState extends State<CreateScreen> {
   var qrStar = 'Add Data';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Create QR Code'),
+        title:const Text('Creating QR code'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          //this widget from lib barcode widget
           BarcodeWidget(
             data: qrStar,
             barcode: Barcode.qrCode(),
             color: Colors.blue,
-            height: 250.0,
-            width: 250.0,
+            height: 250,
+            width: 250,
           ),
           Container(
-            alignment: AlignmentDirectional.center,
+            alignment: Alignment.center,
             width: MediaQuery.of(context).size.width * .8,
             child: TextField(
-              onChanged: (value) {
-                qrStar = value;
+              onChanged: (val) {
+                setState(() {
+                  qrStar = val;
+                });
               },
-              decoration: const InputDecoration(
-                  hintText: 'Enter your Data Here',
+              decoration:const InputDecoration(
+                  hintText: 'Enter your data here',
                   border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                    width: 2.0,
-                    color: Colors.red,
-                  ))),
+                      borderSide: BorderSide(color: Colors.blue, width: 2))),
             ),
           ),
           SizedBox(
             width: MediaQuery.of(context).size.width,
-          ),
+          )
         ],
       ),
     );
